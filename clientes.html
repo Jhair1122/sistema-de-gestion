@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clientes · Bodega+</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__marca">Bodega<span>+</span></div>
+      <nav class="sidebar__nav">
+        <a href="/dashboard.html" data-nav="dashboard">Panel</a>
+        <a href="/productos.html" data-nav="productos">Productos</a>
+        <a href="/clientes.html" data-nav="clientes">Clientes</a>
+        <a href="/ventas.html" data-nav="ventas">Ventas</a>
+        <a href="/inventario.html" data-nav="inventario">Inventario</a>
+        <a href="/reportes.html" data-nav="reportes">Reportes</a>
+      </nav>
+      <button class="sidebar__salir" data-logout type="button">Cerrar sesión</button>
+    </aside>
+
+    <div class="app-content">
+      <header class="app-topbar">
+        <h1>Clientes</h1>
+        <span class="app-topbar__usuario">Hola, <strong data-usuario-nombre>—</strong></span>
+      </header>
+
+      <main class="app-main">
+        <div class="mensaje-error oculto" data-error></div>
+
+        <section class="seccion">
+          <div class="seccion-cabecera">
+            <div class="filtros">
+              <div class="campo">
+                <label for="buscar-cliente">Buscar</label>
+                <input type="search" id="buscar-cliente" placeholder="Nombre del cliente…" />
+              </div>
+            </div>
+            <button class="boton" type="button" data-abrir-cliente>Nuevo cliente</button>
+          </div>
+
+          <div class="tabla-envoltorio">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nombre</th>
+                  <th>Documento</th>
+                  <th>Teléfono</th>
+                  <th>Correo</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody data-tabla-clientes>
+                <tr class="tabla-vacia"><td colspan="5">Cargando…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog data-dialogo-cliente>
+    <form class="dialogo-cuerpo" method="dialog" id="form-cliente">
+      <h2 data-titulo-cliente>Nuevo cliente</h2>
+      <input type="hidden" name="id" />
+      <div class="campo">
+        <label for="cl-nombre">Nombre</label>
+        <input type="text" id="cl-nombre" name="nombre" required />
+      </div>
+      <div class="campo-fila">
+        <div class="campo">
+          <label for="cl-documento">Documento</label>
+          <input type="text" id="cl-documento" name="documento" />
+        </div>
+        <div class="campo">
+          <label for="cl-telefono">Teléfono</label>
+          <input type="text" id="cl-telefono" name="telefono" />
+        </div>
+      </div>
+      <div class="campo">
+        <label for="cl-email">Correo</label>
+        <input type="email" id="cl-email" name="email" />
+      </div>
+      <div class="campo">
+        <label for="cl-direccion">Dirección</label>
+        <input type="text" id="cl-direccion" name="direccion" />
+      </div>
+      <div class="dialogo-acciones">
+        <button class="boton boton--fantasma" type="button" data-cerrar-cliente>Cancelar</button>
+        <button class="boton" type="submit">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog data-dialogo-historial>
+    <div class="dialogo-cuerpo">
+      <h2 data-titulo-historial>Historial de compras</h2>
+      <div class="tabla-envoltorio">
+        <table>
+          <thead>
+            <tr><th>Fecha</th><th class="num">Total</th><th>Estado</th></tr>
+          </thead>
+          <tbody data-tabla-historial>
+            <tr class="tabla-vacia"><td colspan="3">Cargando…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="dialogo-acciones">
+        <button class="boton boton--fantasma" type="button" data-cerrar-historial>Cerrar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/clientes.js"></script>
+</body>
+</html>

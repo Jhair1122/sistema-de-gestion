@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reportes · Bodega+</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__marca">Bodega<span>+</span></div>
+      <nav class="sidebar__nav">
+        <a href="/dashboard.html" data-nav="dashboard">Panel</a>
+        <a href="/productos.html" data-nav="productos">Productos</a>
+        <a href="/clientes.html" data-nav="clientes">Clientes</a>
+        <a href="/ventas.html" data-nav="ventas">Ventas</a>
+        <a href="/inventario.html" data-nav="inventario">Inventario</a>
+        <a href="/reportes.html" data-nav="reportes">Reportes</a>
+      </nav>
+      <button class="sidebar__salir" data-logout type="button">Cerrar sesión</button>
+    </aside>
+
+    <div class="app-content">
+      <header class="app-topbar">
+        <h1>Reportes</h1>
+        <span class="app-topbar__usuario">Hola, <strong data-usuario-nombre>—</strong></span>
+      </header>
+
+      <main class="app-main">
+        <div class="mensaje-error oculto" data-error></div>
+
+        <div class="filtros">
+          <div class="campo">
+            <label for="r-desde">Desde</label>
+            <input type="date" id="r-desde" />
+          </div>
+          <div class="campo">
+            <label for="r-hasta">Hasta</label>
+            <input type="date" id="r-hasta" />
+          </div>
+          <button class="boton" type="button" data-aplicar-filtro>Aplicar</button>
+        </div>
+
+        <section class="seccion">
+          <h2>Ventas del periodo</h2>
+          <div class="resumen-fila">
+            <div class="resumen-celda">
+              <span class="etiqueta">Ventas completadas</span>
+              <span class="cifra nums" data-cantidad-ventas>0</span>
+            </div>
+            <div class="resumen-celda">
+              <span class="etiqueta">Total vendido</span>
+              <span class="cifra nums" data-total-periodo>S/ 0.00</span>
+            </div>
+          </div>
+          <div class="tabla-envoltorio">
+            <table>
+              <thead>
+                <tr><th>Fecha</th><th class="num">Total</th><th>Estado</th></tr>
+              </thead>
+              <tbody data-tabla-reporte-ventas>
+                <tr class="tabla-vacia"><td colspan="3">Cargando…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="seccion">
+          <h2>Productos más vendidos</h2>
+          <div class="tabla-envoltorio">
+            <table>
+              <thead>
+                <tr><th>Producto</th><th class="num">Cantidad vendida</th><th class="num">Total vendido</th></tr>
+              </thead>
+              <tbody data-tabla-top-productos>
+                <tr class="tabla-vacia"><td colspan="3">Cargando…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="seccion">
+          <h2>Movimientos de inventario</h2>
+          <div class="tabla-envoltorio">
+            <table>
+              <thead>
+                <tr><th>Fecha</th><th>Tipo</th><th class="num">Cantidad</th><th class="num">Stock resultante</th></tr>
+              </thead>
+              <tbody data-tabla-reporte-inventario>
+                <tr class="tabla-vacia"><td colspan="4">Cargando…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/reportes.js"></script>
+</body>
+</html>

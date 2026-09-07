@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productos · Bodega+</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar__marca">Bodega<span>+</span></div>
+      <nav class="sidebar__nav">
+        <a href="/dashboard.html" data-nav="dashboard">Panel</a>
+        <a href="/productos.html" data-nav="productos">Productos</a>
+        <a href="/clientes.html" data-nav="clientes">Clientes</a>
+        <a href="/ventas.html" data-nav="ventas">Ventas</a>
+        <a href="/inventario.html" data-nav="inventario">Inventario</a>
+        <a href="/reportes.html" data-nav="reportes">Reportes</a>
+      </nav>
+      <button class="sidebar__salir" data-logout type="button">Cerrar sesión</button>
+    </aside>
+
+    <div class="app-content">
+      <header class="app-topbar">
+        <h1>Productos</h1>
+        <span class="app-topbar__usuario">Hola, <strong data-usuario-nombre>—</strong></span>
+      </header>
+
+      <main class="app-main">
+        <div class="mensaje-error oculto" data-error></div>
+        <div class="mensaje-exito oculto" data-exito></div>
+
+        <section class="seccion">
+          <div class="seccion-cabecera">
+            <div class="filtros">
+              <div class="campo">
+                <label for="buscar-producto">Buscar</label>
+                <input type="search" id="buscar-producto" placeholder="Nombre del producto…" />
+              </div>
+              <div class="campo">
+                <label for="filtro-categoria">Categoría</label>
+                <select id="filtro-categoria">
+                  <option value="">Todas</option>
+                </select>
+              </div>
+            </div>
+            <div class="acciones-fila solo-admin">
+              <button class="boton boton--fantasma" type="button" data-abrir-categoria>Nueva categoría</button>
+              <button class="boton" type="button" data-abrir-producto>Nuevo producto</button>
+            </div>
+          </div>
+
+          <div class="tabla-envoltorio">
+            <table>
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Categoría</th>
+                  <th class="num">Precio</th>
+                  <th class="num">Stock</th>
+                  <th>Estado</th>
+                  <th class="solo-admin"></th>
+                </tr>
+              </thead>
+              <tbody data-tabla-productos>
+                <tr class="tabla-vacia"><td colspan="6">Cargando…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog data-dialogo-producto>
+    <form class="dialogo-cuerpo" method="dialog" id="form-producto">
+      <h2 data-titulo-producto>Nuevo producto</h2>
+      <input type="hidden" name="id" />
+      <div class="campo">
+        <label for="p-nombre">Nombre</label>
+        <input type="text" id="p-nombre" name="nombre" required />
+      </div>
+      <div class="campo">
+        <label for="p-categoria">Categoría</label>
+        <select id="p-categoria" name="categoria_id"></select>
+      </div>
+      <div class="campo">
+        <label for="p-descripcion">Descripción</label>
+        <textarea id="p-descripcion" name="descripcion"></textarea>
+      </div>
+      <div class="campo-fila">
+        <div class="campo">
+          <label for="p-precio">Precio (S/)</label>
+          <input type="number" id="p-precio" name="precio" min="0" step="0.01" required />
+        </div>
+        <div class="campo" data-solo-nuevo>
+          <label for="p-stock">Stock inicial</label>
+          <input type="number" id="p-stock" name="stock" min="0" step="1" value="0" />
+        </div>
+        <div class="campo">
+          <label for="p-stock-minimo">Stock mínimo</label>
+          <input type="number" id="p-stock-minimo" name="stock_minimo" min="0" step="1" value="0" />
+        </div>
+      </div>
+      <div class="dialogo-acciones">
+        <button class="boton boton--fantasma" type="button" data-cerrar-producto>Cancelar</button>
+        <button class="boton" type="submit">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog data-dialogo-categoria>
+    <form class="dialogo-cuerpo" method="dialog" id="form-categoria">
+      <h2>Nueva categoría</h2>
+      <div class="campo">
+        <label for="c-nombre">Nombre</label>
+        <input type="text" id="c-nombre" name="nombre" required />
+      </div>
+      <div class="campo">
+        <label for="c-descripcion">Descripción</label>
+        <textarea id="c-descripcion" name="descripcion"></textarea>
+      </div>
+      <div class="dialogo-acciones">
+        <button class="boton boton--fantasma" type="button" data-cerrar-categoria>Cancelar</button>
+        <button class="boton" type="submit">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/productos.js"></script>
+</body>
+</html>
