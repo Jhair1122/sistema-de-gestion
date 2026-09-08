@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ventas · Bodega+</title>
+  <link rel="icon" href="/img/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="fondo-liquido" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+  <div class="app-shell">
+    <aside class="sidebar" data-revelar>
+      <div class="sidebar__marca">Bodega<span>+</span></div>
+      <nav class="sidebar__nav">
+        <a href="/dashboard.html" data-nav="dashboard">Panel</a>
+        <a href="/productos.html" data-nav="productos">Productos</a>
+        <a href="/clientes.html" data-nav="clientes">Clientes</a>
+        <a href="/ventas.html" data-nav="ventas">Ventas</a>
+        <a href="/inventario.html" data-nav="inventario">Inventario</a>
+        <a href="/reportes.html" data-nav="reportes">Reportes</a>
+      </nav>
+      <button class="sidebar__salir" data-logout type="button">Cerrar sesión</button>
+    </aside>
+
+    <div class="app-content">
+      <header class="app-topbar" data-revelar="1">
+        <div>
+          <h1>Ventas</h1>
+          <p class="subtitulo-seccion" style="margin:0.2rem 0 0">Arma la venta, confirma y el stock se descuenta solo.</p>
+        </div>
+        <span class="app-topbar__usuario">Hola, <strong data-usuario-nombre>—</strong></span>
+      </header>
+
+      <main class="app-main">
+        <div class="mensaje-error oculto" data-error></div>
+
+        <section class="seccion" data-revelar="2">
+          <h2>Nueva venta</h2>
+          <p class="subtitulo-seccion">Elige los productos y cantidades; el total se calcula solo y el servidor vuelve a verificarlo antes de guardar.</p>
+          <form id="form-venta">
+            <div class="campo" style="max-width: 22rem">
+              <label for="v-cliente">Cliente (opcional)</label>
+              <select id="v-cliente" name="cliente_id">
+                <option value="">Sin cliente</option>
+              </select>
+            </div>
+
+            <div class="venta-items" data-items></div>
+
+            <button class="boton boton--fantasma boton--pequeno" type="button" data-agregar-item style="margin-bottom:1rem">
+              + Agregar producto
+            </button>
+
+            <div class="venta-total">
+              <span>Total</span>
+              <strong data-venta-total class="nums">S/ 0.00</strong>
+            </div>
+
+            <button class="boton" type="submit" style="margin-top:1rem">Registrar venta</button>
+          </form>
+        </section>
+
+        <section class="seccion" data-revelar="3">
+          <h2>Historial de ventas</h2>
+          <p class="subtitulo-seccion">Todas las ventas de tu negocio. Puedes anular una si se registró por error.</p>
+          <div class="tabla-envoltorio">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Cliente</th>
+                  <th class="num">Total</th>
+                  <th>Estado</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody data-tabla-ventas></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <dialog data-dialogo-detalle>
+    <div class="dialogo-cuerpo">
+      <h2>Detalle de la venta</h2>
+      <div class="tabla-envoltorio">
+        <table>
+          <thead>
+            <tr><th>Producto</th><th class="num">Cantidad</th><th class="num">Subtotal</th></tr>
+          </thead>
+          <tbody data-tabla-detalle></tbody>
+        </table>
+      </div>
+      <div class="dialogo-acciones">
+        <button class="boton boton--fantasma" type="button" data-cerrar-detalle>Cerrar</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="/js/ui.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/ventas.js"></script>
+</body>
+</html>

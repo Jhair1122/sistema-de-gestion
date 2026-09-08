@@ -1,0 +1,22 @@
+Esta carpeta es para las imágenes que tú agregues manualmente al repo.
+El sitio funciona perfecto sin ellas (los degradados de vidrio quedan
+detrás), así que agrégalas cuando quieras — no son obligatorias.
+
+1) hero-bodega.jpg
+   Dónde se usa: index.html (la "vitrina" de la portada).
+   Qué buscar: una foto de un mostrador o estante de bodega/tienda
+   pequeña, con buena luz cálida. Funciona bien una foto vertical.
+   Tamaño recomendado: 1000×1250 px aprox (relación 4:5), JPG.
+   Dónde conseguir gratis: unsplash.com o pexels.com, busca "bodega",
+   "corner store" o "grocery shelf".
+   Una vez que la tengas, solo ponla en img/hero-bodega.jpg con ese
+   nombre exacto — el CSS ya la está llamando.
+
+2) favicon.png (opcional)
+   Dónde se usa: el ícono de la pestaña del navegador en todas las
+   páginas (ya está referenciado en el <head> de cada .html).
+   Tamaño recomendado: 64×64 px o 128×128 px, PNG con fondo transparente.
+   Puede ser tan simple como un ícono de una bolsa o un carrito.
+
+Si en algún momento agregas fotos de productos, avísame y ajusto
+productos.html/productos.js y la base de datos para guardar esa URL.

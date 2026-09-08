@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel · Bodega+</title>
+  <link rel="icon" href="/img/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <div class="fondo-liquido" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+  <div class="app-shell">
+    <aside class="sidebar" data-revelar>
+      <div class="sidebar__marca">Bodega<span>+</span></div>
+      <nav class="sidebar__nav">
+        <a href="/dashboard.html" data-nav="dashboard">Panel</a>
+        <a href="/productos.html" data-nav="productos">Productos</a>
+        <a href="/clientes.html" data-nav="clientes">Clientes</a>
+        <a href="/ventas.html" data-nav="ventas">Ventas</a>
+        <a href="/inventario.html" data-nav="inventario">Inventario</a>
+        <a href="/reportes.html" data-nav="reportes">Reportes</a>
+      </nav>
+      <button class="sidebar__salir" data-logout type="button">Cerrar sesión</button>
+    </aside>
+
+    <div class="app-content">
+      <header class="app-topbar" data-revelar="1">
+        <div>
+          <h1>Panel</h1>
+          <p class="subtitulo-seccion" style="margin:0.2rem 0 0">Así está tu negocio hoy, de un vistazo.</p>
+        </div>
+        <span class="app-topbar__usuario">Hola, <strong data-usuario-nombre>—</strong></span>
+      </header>
+
+      <main class="app-main">
+        <div class="mensaje-error oculto" data-error></div>
+
+        <div class="resumen-fila" data-revelar="2">
+          <div class="resumen-celda cristal--interactivo" data-tilt>
+            <span class="etiqueta">Ventas de hoy</span>
+            <span class="cifra nums" data-ventas-hoy-total>S/ 0.00</span>
+          </div>
+          <div class="resumen-celda cristal--interactivo" data-tilt>
+            <span class="etiqueta">Ventas del mes</span>
+            <span class="cifra nums" data-ventas-mes-total>S/ 0.00</span>
+          </div>
+          <div class="resumen-celda cristal--interactivo" data-tilt>
+            <span class="etiqueta">Productos activos</span>
+            <span class="cifra nums" data-total-productos>0</span>
+          </div>
+          <div class="resumen-celda cristal--interactivo" data-tilt>
+            <span class="etiqueta">Con stock bajo</span>
+            <span class="cifra nums alerta" data-stock-bajo>0</span>
+          </div>
+          <div class="resumen-celda cristal--interactivo" data-tilt>
+            <span class="etiqueta">Clientes activos</span>
+            <span class="cifra nums" data-total-clientes>0</span>
+          </div>
+        </div>
+
+        <section class="seccion" data-revelar="3">
+          <div class="seccion-cabecera">
+            <div>
+              <h2>Ventas recientes</h2>
+              <p class="subtitulo-seccion">Las últimas 5 ventas registradas, más nuevas primero.</p>
+            </div>
+            <a class="boton boton--fantasma boton--pequeno" href="/ventas.html">Ver todas</a>
+          </div>
+          <div class="tabla-envoltorio">
+            <table>
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th class="num">Total</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody data-tabla-recientes></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="/js/ui.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
